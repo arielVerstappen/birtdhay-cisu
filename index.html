@@ -576,7 +576,7 @@
       display: none !important;
     }
 
-    /* Background Room Vintage (Muncul di Tahap 2) */
+    /* Background Room Vintage */
     .bg-room {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -892,8 +892,7 @@
 
   <!-- ================= TAHAP 1: GAME F1 & INVITATION ================= -->
   <div class="app-container" id="f1-app">
-    <!-- Ubah tag audio yang sudah ada menjadi seperti ini -->
-<audio id="bg-music" src="background-music.mp3" loop preload="auto"></audio>
+    <audio id="bg-music" src="background-music.mp3" loop preload="auto"></audio>
 
     <!-- SCREEN 1: PIN -->
     <div class="screen active" id="screen-pin">
@@ -1047,7 +1046,6 @@
         </div>
       </div>
 
-      <!-- Tombol ini memicu transisi ke Layar Amplop -->
       <button class="btn-ferrari" style="margin-top: auto;" onclick="celebrateAndTransition()">
         BOX BOX! CONFIRM ATTENDANCE 🍾
       </button>
@@ -1067,7 +1065,6 @@
 
   <!-- ================= TAHAP 2: SONGS FOR YOU / MIXTAPE ================= -->
   
-  <!-- Background Ruangan Vintage -->
   <div class="bg-room" id="bg-room"></div>
 
   <!-- LAYAR 1 (TAHAP 2): AMPLOP SURAT -->
@@ -1078,7 +1075,6 @@
     </div>
   </div>
 
-  <!-- OVERLAY ANIMASI BUNGA BERHAMBURAN -->
   <div id="bloom-overlay" class="bloom-overlay hidden"></div>
 
   <!-- LAYAR 2 (TAHAP 2): KONTEN KASET UTAMA -->
@@ -1088,34 +1084,33 @@
       <h1 class="title">Songs for you</h1>
     </div>
 
-    <!-- Kaset -->
     <div class="cassette-wrapper">
       <img src="kaset.png" alt="Cassette Tape" class="cassette-img">
     </div>
 
     <div class="card-body">
-      <!-- Playlist -->
+      <!-- Playlist (Sudah Ditambahkan ID yang Sesuai) -->
       <div class="playlist">
-        <div class="track active" onclick="playTrack(1, 'Perfect', 'Ed Sheeran')">
+        <div class="track" id="track-1" onclick="playTrack(1, 'Perfect', 'Ed Sheeran')">
           <span class="track-num">01</span>
           <div class="track-details">
             <span class="track-title">Perfect</span>
             <span class="track-artist">Ed Sheeran</span>
           </div>
-          <button class="btn-play">▶</button>
+          <button class="btn-play" id="btn-play-1">▶</button>
         </div>
 
-        <div class="track" onclick="playTrack(2, 'All of Me', 'John Legend')">
+        <div class="track" id="track-2" onclick="playTrack(2, 'All of Me', 'John Legend')">
           <span class="track-num">02</span>
           <div class="track-details">
             <span class="track-title">All of Me</span>
             <span class="track-artist">John Legend</span>
           </div>
-          <button class="btn-play">▶</button>
+          <button class="btn-play" id="btn-play-2">▶</button>
         </div>
 
         <div class="status-bar">
-          Starting: <span id="current-song-name">Perfect</span>
+          <span id="current-song-name">Pilih lagu untuk memutar</span>
         </div>
       </div>
 
@@ -1124,8 +1119,8 @@
         <h2>LINER NOTE</h2>
         <p class="greeting">Hey you,</p>
         <p class="message">
-          Officially entering the 20s club! gimana rasanya resmi kepala dua? WKWWKWK TUA. Semoga makin dewasa, tapi pliss encoknya jangan ikut-ikutan dateng dulu ya, KWKWKW! Just kidding! 😜
-          Di usiamu yang ke-20 ini, ariel mau kirim doa yang paling tulus buat cisu. Semoga Allah selalu melimpahkan keberkahan di setiap langkahmu, melipatgandakan pahala dari setiap kebaikan yang cisu lakukan, dan menjaga hati cisu yang selalu sejuk itu. Semoga cisu senantiasa diberikan kesehatan, ketenangan pikiran, kelancaran dalam menuntut ilmu/karir, serta dikelilingi oleh orang-orang yang tulus menyayangimu. May Allah bless every single step of your journey and make all your dreams come true.
+          Officially entering the 20s club! yee masuk kepala dua WKWWKWK TUA. Semoga makin DEWASA, jangan jadi jompo dulu ya,
+          Di usia cisu yang ke-20 ini, ariel mau kirim doa yang paling tulus buat cisu. Semoga Allah selalu melimpahkan keberkahan di setiap langkah cisu, melipatgandakan pahala dari setiap kebaikan yang cisu lakukan, dan menjaga hati cisu yang selalu sejuk itu. Semoga cisu senantiasa diberikan kesehatan, ketenangan pikiran, kelancaran dalam menuntut ilmu/karir, serta dikelilingi oleh orang-orang yang tulus sayang cisu. May Allah bless every single step of your journey and make all your dreams come true.
           Oh iya, berhubung doa-doa baik udah meluncur deras, ariwl mau titip satu wish kecil lagi nih: Is it okay if I pray to be the one who stays by your side for a long time? Asking for myself, of course... 🤭 KELAZZZ KINKKK
           Anyway, enjoy your special day to the fullest! Don't forget to save a big slice of birthday cake for me, okay? Happy Birthday once again, and stay as wonderful as you are! 🎉 Allah bless you always!
         </p>
@@ -1143,7 +1138,7 @@
     </button>
   </div>
 
-  <!-- Modal Popup YouTube / Bouquet (Pojok Kiri Bawah) -->
+  <!-- Modal Popup YouTube / Bouquet -->
   <div class="modal-overlay hidden" id="music-modal">
     <div class="modal-card">
       <button class="close-modal-btn" id="close-widget-btn">✕</button>
@@ -1160,18 +1155,17 @@
         
         <div class="video-container">
           <iframe id="yt-player" 
-        src="https://www.youtube.com/embed/CYt48c5K3fc?enablejsapi=1&autoplay=1" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-</iframe>
+            src="https://www.youtube.com/embed/CYt48c5K3fc?enablejsapi=1" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </div>
   </div>
   
-<!-- Tag Audio Tunggal -->
   <audio id="audio-player" preload="auto"></audio>
 
   <!-- ================= LOGIKA JAVASCRIPT ================= -->
@@ -1536,7 +1530,7 @@
       }, 1200);
     });
 
-    // PEMUTAR MUSIK DENGAN PENANGANAN ERROR & SPASI
+    // PEMUTAR MUSIK TERPERBAIKI
     const songs = {
       1: 'perfect.mp3',
       2: 'all of me.mp3'
@@ -1547,23 +1541,27 @@
     let currentTrackId = null;
 
     async function playTrack(trackId, title, artist) {
+      // Sembunyikan/Reset status visual semua lagu
       document.querySelectorAll('.track').forEach(t => t.classList.remove('active'));
-      const activeTrack = document.getElementById(`track-${trackId}`);
-      if (activeTrack) activeTrack.classList.add('active');
-
       document.querySelectorAll('.btn-play').forEach(btn => btn.textContent = '▶');
 
-      // Toggle Pause/Play jika lagu yang sama dipencet
+      // Aktifkan baris yang dipilih
+      const activeTrack = document.getElementById(`track-${trackId}`);
+      const activeBtn = document.getElementById(`btn-play-${trackId}`);
+      
+      if (activeTrack) activeTrack.classList.add('active');
+
+      // Jika lagu sama dipencet (Toggle Pause/Play)
       if (currentTrackId === trackId) {
         if (!audioPlayer.paused) {
           audioPlayer.pause();
           if (currentSongText) currentSongText.innerText = `Paused: ${title} - ${artist}`;
-          document.getElementById(`btn-play-${trackId}`).textContent = '▶';
+          if (activeBtn) activeBtn.textContent = '▶';
         } else {
           try {
             await audioPlayer.play();
             if (currentSongText) currentSongText.innerText = `Playing: ${title} - ${artist}`;
-            document.getElementById(`btn-play-${trackId}`).textContent = '⏸';
+            if (activeBtn) activeBtn.textContent = '⏸';
           } catch (e) {
             console.error("Gagal melanjutkan pemutaran:", e);
           }
@@ -1571,22 +1569,22 @@
         return;
       }
 
-      // Jalankan lagu baru
+      // Putar lagu baru
       currentTrackId = trackId;
-      
-      // Gunakan encodeURI untuk menangani spasi nama file (all of me.mp3)
       const fileName = songs[trackId];
+      
+      // Gunakan encodeURI agar nama file berspasi dapat dibaca browser
       audioPlayer.src = encodeURI(fileName);
       audioPlayer.load();
 
       try {
         await audioPlayer.play();
         if (currentSongText) currentSongText.innerText = `Playing: ${title} - ${artist}`;
-        document.getElementById(`btn-play-${trackId}`).textContent = '⏸';
+        if (activeBtn) activeBtn.textContent = '⏸';
       } catch (err) {
         console.error("Error playing audio:", err);
         if (currentSongText) {
-          currentSongText.innerText = `Error: File "${fileName}" tidak ditemukan / diblokir browser!`;
+          currentSongText.innerText = `Error: File "${fileName}" tidak ditemukan!`;
           currentSongText.style.color = '#ff4d4d';
         }
       }
@@ -1597,31 +1595,28 @@
     const closeWidgetBtn = document.getElementById('close-widget-btn');
     const musicModal = document.getElementById('music-modal');
 
-    // Gantilah bagian ini di JavaScript kamu:
-if (openWidgetBtn) {
-  openWidgetBtn.addEventListener('click', () => {
-    musicModal.classList.remove('hidden');
-    
-    const iframe = document.getElementById('yt-player');
-    if (iframe) {
-      // Tambahkan &mute=1 agar browser mengizinkan autoplay tanpa diblokir
-      iframe.src = "https://www.youtube.com/embed/CYt48c5K3fc?autoplay=1&mute=1&enablejsapi=1";
+    if (openWidgetBtn) {
+      openWidgetBtn.addEventListener('click', () => {
+        musicModal.classList.remove('hidden');
+        const iframe = document.getElementById('yt-player');
+        if (iframe) {
+          iframe.src = "https://www.youtube.com/embed/CYt48c5K3fc?autoplay=1&mute=1&enablejsapi=1";
+        }
+      });
     }
-  });
-}
 
     if (closeWidgetBtn) {
       closeWidgetBtn.addEventListener('click', () => {
         musicModal.classList.add('hidden');
         const iframe = document.getElementById('yt-player');
         if (iframe) {
-          const src = iframe.src;
-          iframe.src = src;
+          iframe.src = "https://www.youtube.com/embed/CYt48c5K3fc?enablejsapi=1";
         }
       });
     }
 
-
     // Inisialisasi awal
     initMemory();
   </script>
+</body>
+</html>
